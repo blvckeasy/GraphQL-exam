@@ -15,8 +15,6 @@ async function fetch(query, ...params) {
       rows: [row],
     } = await client.query(query, params.length ? params : null)
     return row
-    // console.log(query)
-    // console.log(params)
   } catch (error) {
     console.log(error)
   } finally {
