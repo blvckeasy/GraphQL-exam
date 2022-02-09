@@ -2,11 +2,14 @@ const model = require('./model.js')
 
 module.exports = {
 	Query: {
-		users: (_, { userId }) => model.users({ userId })
+		users: (_, { id, username, contact, email, role }) => model.users({ id, username, contact, email, role })
 	},
 
 	User: {
-		userId: global => global.user_id,
-		birthDate: global => global.birth_date,
+		id: parent => parent.id,
+		username: parent => parent.username,
+		contact: parent => parent.contact,
+		email: parent => parent.email,
+		role: parent => parent.role,
 	}
 }

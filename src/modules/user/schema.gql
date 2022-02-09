@@ -1,9 +1,20 @@
+scalar Contact
+scalar Email
+
 type Query {
-	users(userId: ID): [User!]!
+  users(
+    id: ID
+    username: String
+    contact: String
+    email: String
+    role: Boolean
+  ): [User!]!
 }
 
 type User {
-	userId: ID!
-	username: String!
-	birthDate: String!
+  id: ID!
+  username: String!
+  contact: Contact!	
+  email: Email!
+  role: Boolean!
 }
