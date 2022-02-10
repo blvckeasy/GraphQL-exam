@@ -16,7 +16,7 @@ type Query {
 
 type Order {
   id: ID!
-  order_created_at: Any
+  order_created_at: Any!
   is_paid: Boolean!
   user_id: Int!
   username: String!

@@ -27,21 +27,21 @@ const ORDERS = `
 			ELSE TRUE
 		END AND
 		CASE 
-			WHEN length($3) > 0 THEN u.contact = $3
+			WHEN length($3) > 0 THEN p.name ILIKE concat($3, '%')
 			ELSE TRUE
 		END AND
 		CASE 
-			WHEN length($4) > 0 THEN u.email = $4
+			WHEN length($4) > 0 THEN o.order_created_at = $4::timestamp
 			ELSE TRUE
 		END AND
 		CASE
-			WHEN $5 in (TRUE, FALSE) THEN u.role = $5
+			WHEN $5 in (TRUE, FALSE) THEN o.is_paid = $5
 			ELSE TRUE
 		END
 	`
 
-const orders = ({ id, username, contact, email, role }) => 
-	fetchAll(ORDERS, id, username, contact, email, role)
+const orders = ({ id, username, product_name, order_created_at, is_paid }) => 
+	fetchAll(ORDERS, id, username, product_name, order_created_at, is_paid)
 
 
 module.exports = {
