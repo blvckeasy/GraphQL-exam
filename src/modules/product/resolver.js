@@ -11,7 +11,8 @@ module.exports = {
     category_id: parent => parent.category_id,
     name: parent => parent.name,
     price: parent => parent.price,
-    shortDesc: parent => parent.shortDesc,
-    longDesc: parent => parent.longDesc,
+    shortDesc: parent => parent.shortdesc,
+    longDesc: parent => parent.longdesc,
+    picture_url: parent => parent.picture_url,
   },
 }
