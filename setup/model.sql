@@ -28,7 +28,7 @@ create table products (
 create table orders (
   id serial not null primary key,
   user_id int not null references users(id),
-  product int not null references products(id),
+  product_id int not null references products(id),
   order_created_at timestamp default current_timestamp,
   is_paid boolean not null default false 
 );
@@ -64,3 +64,7 @@ insert into products ( category_id, name, price, shortDesc, longDesc, picture_ur
   (4, 'Velosiped', 1000000, 'yangi holatda', 'holati yaxshi haydalmagan', '/1234567velosiped.jpg'),
   (5, 'Kir yuvish mashina', 3500000, 'yangi holatda', 'holati yaxshi', '/1234567kir_yuvish_mashinasi.jpg'),
   (6, 'Iphone 13 Pro Max', 10000000, 'yangi rangi kok', 'narxini kelishamiz', '/1234567iphone13promax.jpg');
+
+insert into orders ( id, user_id, product_id, is_paid ) values ( 1, 1, 1, false );
+insert into orders ( id, user_id, product_id, is_paid ) values ( 2, 2, 2, false );
+insert into orders ( id, user_id, product_id, is_paid ) values ( 3, 3, 3, false );

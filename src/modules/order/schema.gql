@@ -1,0 +1,30 @@
+scalar Date
+scalar Contact
+scalar Email
+scalar Password
+scalar Any
+
+type Query {
+  orders(
+    id: ID
+    username: String
+    product_name: String
+    order_created_at: Date
+    is_paid: Boolean
+  ): [Order!]!
+}
+
+type Order {
+  id: ID!
+  order_created_at: Any
+  is_paid: Boolean!
+  user_id: Int!
+  username: String!
+  contact: Contact!
+  email: Email!
+  product_name: String!
+  product_price: String!
+  shortdesc: String!
+  longdesc: String!
+  image_url: String!
+}
