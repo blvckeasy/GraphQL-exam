@@ -43,9 +43,31 @@ function checkEmail(value) {
   return value
 }
 
+const passwordScalar = new GraphQLScalarType({
+  name: 'Password',
+  description: 'This is a string for representing Password',
+  serialize: checkPassword,
+  parseValue: checkPassword,
+  parseLiteral: function (AST) {
+    if (AST.kind == Kind.STRING) {
+      return checkPassword(AST.value)
+    } else throw new Error('Password value must String!')
+  },
+})
+
+function checkPassword(value) {
+  if (!(typeof value == 'string'))
+    throw new Error('Password value must be String!')
+  if (!/^(?=.*[a-z])(?=.*[a-zA-Z]).{5,20}$/.test(value))
+    throw new Error('Password value must be valid password!')
+
+  return value
+}
+
 module.exports = {
   Contact: contactScalar,
   Email: emailScalar,
+  Password: passwordScalar,
 
   Role: {
     admin: true,
@@ -58,8 +80,10 @@ module.exports = {
   },
 
   Mutation: {
-		registration: (_, { username, password, contact, email, role }) => model.registerUser({ username, password, contact, email, role })
-		
+		registration: (_, { username, password, contact, email, role }) => 
+      model.registerUser({ username, password, contact, email, role }),
+		login: (_, { username, password }) => 
+      model.loginUser({ username, password }),
 	},
 
   User: {

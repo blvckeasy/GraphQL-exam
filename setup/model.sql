@@ -64,19 +64,3 @@ insert into products ( category_id, name, price, shortDesc, longDesc, picture_ur
   (4, 'Velosiped', 1000000, 'yangi holatda', 'holati yaxshi haydalmagan', '/1234567velosiped.jpg'),
   (5, 'Kir yuvish mashina', 3500000, 'yangi holatda', 'holati yaxshi', '/1234567kir_yuvish_mashinasi.jpg'),
   (6, 'Iphone 13 Pro Max', 10000000, 'yangi rangi kok', 'narxini kelishamiz', '/1234567iphone13promax.jpg');
-
-
-
-SELECT
-	*
-FROM products
-WHERE	
-	CASE
-		WHEN length('K') > 0 THEN (SELECT id FROM categories WHERE name ILIKE concat('K', '%')) is not null
-		ELSE TRUE
-	END
-LIMIT 1;
-
-
-
-INSERT INTO users (username, password, contact, email, role) values ('salom', '123456', '+998999696578', 'qweretwe@gmail.com', false) RETURNING *;

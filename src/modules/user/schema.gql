@@ -24,6 +24,11 @@ type Mutation {
     contact: Contact!
     email: Email!
     role: Role
+  ):[User!]!,
+
+  login(
+    username: String!,
+    password: Password!
   ):[User!]!
 }
 
