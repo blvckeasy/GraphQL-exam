@@ -1,13 +1,18 @@
 scalar Contact
 scalar Email
 
+enum Role {
+  admin
+  user
+}
+
 type Query {
   users(
     id: ID
     username: String
-    contact: String
-    email: String
-    role: Boolean
+    contact: Contact
+    email: Email
+    role: Role
   ): [User!]!
 }
 
@@ -16,5 +21,5 @@ type User {
   username: String!
   contact: Contact!	
   email: Email!
-  role: Boolean!
+  role: Role!
 }
