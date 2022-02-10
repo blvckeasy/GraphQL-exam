@@ -76,3 +76,7 @@ WHERE
 		ELSE TRUE
 	END
 LIMIT 1;
+
+
+
+INSERT INTO users (username, password, contact, email, role) values ('salom', '123456', '+998999696578', 'qweretwe@gmail.com', false) RETURNING *;

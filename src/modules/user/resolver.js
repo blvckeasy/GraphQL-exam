@@ -57,6 +57,11 @@ module.exports = {
       model.users({ id, username, contact, email, role }),
   },
 
+  Mutation: {
+		registration: (_, { username, password, contact, email, role }) => model.registerUser({ username, password, contact, email, role })
+		
+	},
+
   User: {
     id: parent => parent.id,
     username: parent => parent.username,
