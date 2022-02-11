@@ -1,5 +1,5 @@
 const { fetch, fetchAll } = require('../../utils/postgres.js')
-const { verify } = require('../../utils/jwt.js')
+const { verify, checkToken } = require('../../utils/jwt.js')
 
 const CATEGORIES = `
 	SELECT
@@ -41,10 +41,7 @@ const categories = ({ id, name }) => fetchAll(CATEGORIES, id, name)
 
 const addCategory = async ({ token, category_name }) => {
   try {
-		const verify_token = verify(token)
-  	if (!verify_token.id) throw new Error("Invalid token")
-		const found_user = await fetch(FOUND_USER, verify_token.id, verify_token.username, verify_token.contact, verify_token.email)
-		if (!found_user.id) throw new Error("User not defined")
+		checkToken(token)
 		return await fetch(ADD_CATEGORY, category_name)
 	} catch (error) {
 		return error
@@ -53,10 +50,7 @@ const addCategory = async ({ token, category_name }) => {
 
 const editCategory = async ({ token,  category_id, category_name }) => {
 	try {
-		const verify_token = verify(token)
-  	if (!verify_token.id) throw new Error("Invalid token")
-		const found_user = await fetch(FOUND_USER, verify_token.id, verify_token.username, verify_token.contact, verify_token.email)
-		if (!found_user.id) throw new Error("User not defined")
+		checkToken(token)
 		return await fetch(EDIT_CATEGORY, category_name, category_id)
 	} catch (error) {
 		return error.message
@@ -65,10 +59,7 @@ const editCategory = async ({ token,  category_id, category_name }) => {
 
 const deleteCategory = async ({ token, category_id }) => {
 	try {
-		const verify_token = verify(token)
-  	if (!verify_token.id) throw new Error("Invalid token")
-		const found_user = await fetch(FOUND_USER, verify_token.id, verify_token.username, verify_token.contact, verify_token.email)
-		if (!found_user.id) throw new Error("User not defined")
+		checkToken(token)
 		return await fetch(DELETE_CATEGORY, category_id)
 	} catch (error) {
 		return error.message
