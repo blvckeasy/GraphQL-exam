@@ -76,15 +76,12 @@ module.exports = {
   },
 
   Query: {
-    users: (_, { id, username, contact, email, role }) =>
-      model.users({ id, username, contact, email, role }),
+    users: (_, { id, username, contact, email, role }) =>model.users({ id, username, contact, email, role }),
   },
 
   Mutation: {
-		registration: (_, { username, password, contact, email, role }) => 
-      model.registerUser({ username, password, contact, email, role }),
-		login: (_, { username, password }) => 
-      model.loginUser({ username, password }),
+		registration: (_, { username, password, contact, email, role }) => model.registerUser({ username, password, contact, email, role }),
+		login: (_, { username, password }) => model.loginUser({ username, password }),
 	},
 
   User: {
@@ -93,6 +90,9 @@ module.exports = {
     contact: parent => parent.contact,
     email: parent => parent.email,
     role: parent => parent.role,
-    token: parent => sign(parent)
+    token: parent => {
+      delete parent.password
+      return sign(parent)
+    }
   },
 }

@@ -2,7 +2,6 @@ scalar Contact
 scalar Email
 scalar Password
 
-
 enum Role {
   admin
   user

@@ -11,7 +11,7 @@ create table users (
 
 create table categories (
   id serial not null primary key,
-  name varchar(70) not null
+  name varchar(70) not null unique
 );
 
 create table products (

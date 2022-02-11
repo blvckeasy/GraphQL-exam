@@ -5,6 +5,13 @@ type Query {
   ): [Category!]!
 }
 
+type Mutation {
+  addCategory(
+    token: String!
+    category_name: String!
+  ): Category!
+}
+
 type Category {
   id: ID!
   name: String!  
