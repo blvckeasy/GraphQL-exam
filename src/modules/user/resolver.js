@@ -1,5 +1,6 @@
 const { GraphQLScalarType, Kind } = require('graphql')
 const model = require('./model.js')
+const { sign } = require('../../utils/jwt.js')
 
 const contactScalar = new GraphQLScalarType({
   name: 'Contact',
@@ -92,5 +93,6 @@ module.exports = {
     contact: parent => parent.contact,
     email: parent => parent.email,
     role: parent => parent.role,
+    token: parent => sign(parent)
   },
 }

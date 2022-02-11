@@ -38,4 +38,5 @@ type User {
   contact: Contact!	
   email: Email!
   role: Role!
+  token: Any
 }
