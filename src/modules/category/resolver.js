@@ -6,7 +6,8 @@ module.exports = {
 	},
 
 	Mutation: {
-		addCategory: (_, { token, category_name }) => model.addCategory({ token, category_name })
+		addCategory: (_, { token, category_name }) => model.addCategory({ token, category_name }),
+		deleteCategory: (_, { token, category_id }) => model.deleteCategory({ token, category_id })
 	},
 
 	Category: {

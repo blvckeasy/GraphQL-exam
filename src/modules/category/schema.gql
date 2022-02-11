@@ -10,6 +10,11 @@ type Mutation {
     token: String!
     category_name: String!
   ): Category!
+
+  deleteCategory(
+    token: String!
+    category_id: ID!
+  ): Category!
 }
 
 type Category {
