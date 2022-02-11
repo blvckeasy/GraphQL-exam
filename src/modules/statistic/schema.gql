@@ -1,0 +1,11 @@
+type Query {
+  statistic(
+    paid: Boolean!
+    toDate: String
+    fromDate: String
+  ): Price!
+}
+
+type Price {
+  price: Int!
+}
