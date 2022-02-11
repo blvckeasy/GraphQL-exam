@@ -11,6 +11,12 @@ type Mutation {
     category_name: String!
   ): Category!
 
+  editCategory(
+    token: String!
+    category_id: ID!
+    category_name: String!
+  ): Category!
+
   deleteCategory(
     token: String!
     category_id: ID!
