@@ -7,5 +7,5 @@ type Query {
 }
 
 type Price {
-  price: Int!
+  price: Any!
 }
